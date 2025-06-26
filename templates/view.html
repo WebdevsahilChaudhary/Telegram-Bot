@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download File</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .download-btn { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            background: #0088cc; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your File is Ready</h1>
+    <p>Filename: {{ filename }}</p>
+    <a href="/download/{{ filename }}" class="download-btn">Download File</a>
+    
+    {% if filename.lower().endswith(('.mp4', '.webm', '.ogg')) %}
+    <div style="margin-top: 20px;">
+        <h3>Stream Video:</h3>
+        <video controls width="100%">
+            <source src="/download/{{ filename }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    {% endif %}
+</body>
+</html>
